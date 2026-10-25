@@ -1,0 +1,2101 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>60 Exercices d'algorithmique</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>60 Exercices d'Algorithmique</h1>
+    <p>Entraînement avancé sur les chaînes de caractères, les nombres réels, les entiers et les booléens.</p>
+</header>
+
+<main>
+<section class="introduction">
+    <h2>Comment travailler ?</h2>
+    <p>Pour chaque exercice, commence par lire l'énoncé et rédige ton analyse. Ouvre ensuite la correction pour comparer ton raisonnement avec la solution proposée.</p>
+    <p>Les analyses comportent uniquement les données, les résultats et le traitement. Les solutions utilisent les structures algorithmiques de base.</p>
+    <div class="progression">
+        <span>60 exercices</span>
+        <span>Énoncés progressifs</span>
+        <span>Corrections cachées</span>
+        <span>HTML + CSS</span>
+    </div>
+</section>
+
+<!-- EXERCICE 01 -->
+<details class="exercice">
+<summary>Exercice 01 — Chaîne symétrique</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire une chaîne non vide et déterminer si son premier et son dernier caractère sont identiques. Afficher également si la chaîne ne contient qu'un seul caractère.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> ch : chaîne de caractères ; n : entier.</p>
+<p><strong>Résultats :</strong> Indiquer si les caractères extrêmes sont identiques ou si la chaîne contient un seul caractère.</p>
+<p><strong>Traitement :</strong> Calculer la longueur de la chaîne. Si elle vaut 1, traiter ce cas particulier. Sinon, comparer le premier caractère au dernier.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Chaine_Symetrique
+Variables
+    ch : chaîne
+    n : entier
+Début
+    Lire(ch)
+    n ← longueur(ch)
+    Si n = 1 Alors
+        Écrire("Un seul caractère")
+    Sinon
+        Si ch[1] = ch[n] Alors
+            Écrire("Identiques")
+        Sinon
+            Écrire("Différents")
+        FinSi
+    FinSi
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 02 -->
+<details class="exercice">
+<summary>Exercice 02 — Nombre entre deux limites</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire trois réels a, b et x. Vérifier si x appartient à l'intervalle fermé délimité par a et b, même si l'utilisateur saisit a supérieur à b.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> a, b, x : réels.</p>
+<p><strong>Résultats :</strong> Indiquer si x appartient à l'intervalle.</p>
+<p><strong>Traitement :</strong> Déterminer la borne minimale et la borne maximale, puis comparer x aux deux bornes en incluant les extrémités.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Appartenance_Intervalle
+Variables
+    a, b, x, min, max : réel
+Début
+    Lire(a, b, x)
+    Si a < b Alors
+        min ← a
+        max ← b
+    Sinon
+        min ← b
+        max ← a
+    FinSi
+    Si x >= min ET x <= max Alors
+        Écrire("Appartient")
+    Sinon
+        Écrire("N'appartient pas")
+    FinSi
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 03 -->
+<details class="exercice">
+<summary>Exercice 03 — Chiffres pairs et impairs</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire un entier strictement positif, puis compter ses chiffres pairs et impairs et calculer la somme de ses chiffres. Le nombre ne doit pas être converti en chaîne.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> n : entier positif ; chiffre : entier.</p>
+<p><strong>Résultats :</strong> Le nombre de chiffres pairs, le nombre de chiffres impairs et la somme des chiffres.</p>
+<p><strong>Traitement :</strong> Extraire le dernier chiffre par MOD 10, le classer selon sa parité, l'ajouter à la somme, puis supprimer ce chiffre avec DIV 10. Répéter jusqu'à ce que n devienne nul.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Chiffres
+Variables
+    n, chiffre, pairs, impairs, somme : entier
+Début
+    Lire(n)
+    pairs ← 0
+    impairs ← 0
+    somme ← 0
+    Répéter
+        chiffre ← n MOD 10
+        Si chiffre MOD 2 = 0 Alors
+            pairs ← pairs + 1
+        Sinon
+            impairs ← impairs + 1
+        FinSi
+        somme ← somme + chiffre
+        n ← n DIV 10
+    Jusqu'à n = 0
+    Écrire(pairs, impairs, somme)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 04 -->
+<details class="exercice">
+<summary>Exercice 04 — Exactement deux conditions</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire trois valeurs booléennes A, B et C. Afficher Vrai si exactement deux valeurs sont vraies et Faux dans tous les autres cas.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> A, B, C : booléens.</p>
+<p><strong>Résultats :</strong> Un booléen indiquant si exactement deux valeurs sont vraies.</p>
+<p><strong>Traitement :</strong> Examiner les trois combinaisons possibles dans lesquelles deux valeurs sont vraies et la troisième est fausse. Réunir ces cas par OU.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Exactement_Deux
+Variables
+    A, B, C, resultat : booléen
+Début
+    Lire(A, B, C)
+    resultat ← (A ET B ET NON C)
+        OU (A ET NON B ET C)
+        OU (NON A ET B ET C)
+    Écrire(resultat)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 05 -->
+<details class="exercice">
+<summary>Exercice 05 — Compter les caractères</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire une chaîne et compter séparément le nombre de lettres A et le nombre de lettres E majuscules qu'elle contient. Les autres caractères sont ignorés.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> ch : chaîne ; i, nbA, nbE : entiers.</p>
+<p><strong>Résultats :</strong> Les nombres d'occurrences de A et de E.</p>
+<p><strong>Traitement :</strong> Parcourir les caractères de la chaîne avec Pour. À chaque caractère, incrémenter le compteur correspondant si le caractère est A ou E.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Compter_A_E
+Variables
+    ch : chaîne
+    i, nbA, nbE : entier
+Début
+    Lire(ch)
+    nbA ← 0
+    nbE ← 0
+    Pour i de 1 à longueur(ch) Faire
+        Si ch[i] = "A" Alors
+            nbA ← nbA + 1
+        Sinon
+            Si ch[i] = "E" Alors
+                nbE ← nbE + 1
+            FinSi
+        FinSi
+    FinPour
+    Écrire(nbA, nbE)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 06 -->
+<details class="exercice">
+<summary>Exercice 06 — Moyenne et décision</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire trois notes réelles comprises entre 0 et 20. Calculer la moyenne et afficher « Admis » si la moyenne est au moins égale à 10 et si aucune note n'est inférieure à 5. Sinon, afficher « Non admis ».</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> n1, n2, n3 : réels.</p>
+<p><strong>Résultats :</strong> La moyenne et la décision d'admission.</p>
+<p><strong>Traitement :</strong> Vérifier la validité des notes, calculer leur moyenne, puis appliquer simultanément les deux conditions d'admission.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Decision_Notes
+Variables
+    n1, n2, n3, m : réel
+Début
+    Lire(n1, n2, n3)
+    Si n1 < 0 OU n1 > 20 OU
+       n2 < 0 OU n2 > 20 OU
+       n3 < 0 OU n3 > 20 Alors
+        Écrire("Notes invalides")
+    Sinon
+        m ← (n1 + n2 + n3) / 3
+        Écrire("Moyenne :", m)
+        Si m >= 10 ET n1 >= 5 ET
+           n2 >= 5 ET n3 >= 5 Alors
+            Écrire("Admis")
+        Sinon
+            Écrire("Non admis")
+        FinSi
+    FinSi
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 07 -->
+<details class="exercice">
+<summary>Exercice 07 — Entier palindrome</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire un entier positif et vérifier s'il se lit de la même manière de gauche à droite et de droite à gauche, sans le convertir en chaîne.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> n, original, inverse, chiffre : entiers.</p>
+<p><strong>Résultats :</strong> Indiquer si l'entier est un palindrome.</p>
+<p><strong>Traitement :</strong> Conserver le nombre original. Construire son inverse en extrayant chaque chiffre et en ajoutant ce chiffre à droite de l'inverse déjà construit. Comparer les deux nombres.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Palindrome_Entier
+Variables
+    n, original, inverse, chiffre : entier
+Début
+    Lire(n)
+    original ← n
+    inverse ← 0
+    TantQue n > 0 Faire
+        chiffre ← n MOD 10
+        inverse ← inverse * 10 + chiffre
+        n ← n DIV 10
+    FinTantQue
+    Si original = inverse Alors
+        Écrire("Palindrome")
+    Sinon
+        Écrire("Non palindrome")
+    FinSi
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 08 -->
+<details class="exercice">
+<summary>Exercice 08 — Conditions logiques d'accès</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Un utilisateur peut accéder à un service s'il possède un compte actif et s'il est majeur, ou s'il possède une autorisation spéciale. Lire ces trois informations et décider si l'accès est autorisé.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> compteActif, majeur, autorisation : booléens.</p>
+<p><strong>Résultats :</strong> La décision d'accès.</p>
+<p><strong>Traitement :</strong> Traduire la règle en logique : le compte actif et la majorité doivent être vrais ensemble, sauf si l'autorisation spéciale est vraie.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Acces_Service
+Variables
+    compteActif, majeur, autorisation : booléen
+    acces : booléen
+Début
+    Lire(compteActif, majeur, autorisation)
+    acces ← (compteActif ET majeur)
+        OU autorisation
+    Écrire(acces)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 09 -->
+<details class="exercice">
+<summary>Exercice 09 — Supprimer les espaces extérieurs</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire une chaîne contenant éventuellement des espaces au début et à la fin. Déterminer le nombre d'espaces consécutifs au début et à la fin, sans compter les espaces situés au milieu.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> ch : chaîne ; i, debut, fin : entiers.</p>
+<p><strong>Résultats :</strong> Le nombre d'espaces au début et à la fin.</p>
+<p><strong>Traitement :</strong> Parcourir depuis le début tant que le caractère est un espace. Faire de même depuis la fin. Soustraire les positions pour calculer les deux nombres.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Espaces_Exterieurs
+Variables
+    ch : chaîne
+    i, n, debut, fin : entier
+Début
+    Lire(ch)
+    n ← longueur(ch)
+    i ← 1
+    TantQue i <= n ET ch[i] = " " Faire
+        i ← i + 1
+    FinTantQue
+    debut ← i - 1
+    i ← n
+    TantQue i >= 1 ET ch[i] = " " Faire
+        i ← i - 1
+    FinTantQue
+    fin ← n - i
+    Écrire(debut, fin)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 10 -->
+<details class="exercice">
+<summary>Exercice 10 — Réels classés</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire trois réels distincts et les afficher dans l'ordre croissant, sans utiliser de tableau ni de fonction de tri.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> a, b, c, temp : réels.</p>
+<p><strong>Résultats :</strong> Les trois valeurs dans l'ordre croissant.</p>
+<p><strong>Traitement :</strong> Effectuer des comparaisons successives et échanger les valeurs lorsqu'elles sont dans le mauvais ordre, jusqu'à obtenir a inférieur à b et b inférieur à c.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Tri_Trois_Reels
+Variables
+    a, b, c, temp : réel
+Début
+    Lire(a, b, c)
+    Si a > b Alors
+        temp ← a
+        a ← b
+        b ← temp
+    FinSi
+    Si b > c Alors
+        temp ← b
+        b ← c
+        c ← temp
+    FinSi
+    Si a > b Alors
+        temp ← a
+        a ← b
+        b ← temp
+    FinSi
+    Écrire(a, b, c)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 11 -->
+<details class="exercice">
+<summary>Exercice 11 — Nombre de voyelles</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire une chaîne et compter les voyelles parmi A, E, I, O et U, en majuscules seulement. Déterminer ensuite si le nombre de voyelles est pair ou impair.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> ch : chaîne ; i, nb : entiers.</p>
+<p><strong>Résultats :</strong> Le nombre de voyelles et sa parité.</p>
+<p><strong>Traitement :</strong> Parcourir la chaîne, incrémenter le compteur pour chaque voyelle, puis vérifier le reste de la division du compteur par 2.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Voyelles_Parite
+Variables
+    ch : chaîne
+    i, nb : entier
+Début
+    Lire(ch)
+    nb ← 0
+    Pour i de 1 à longueur(ch) Faire
+        Si ch[i] = "A" OU ch[i] = "E" OU
+           ch[i] = "I" OU ch[i] = "O" OU
+           ch[i] = "U" Alors
+            nb ← nb + 1
+        FinSi
+    FinPour
+    Écrire("Voyelles :", nb)
+    Si nb MOD 2 = 0 Alors
+        Écrire("Nombre pair")
+    Sinon
+        Écrire("Nombre impair")
+    FinSi
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 12 -->
+<details class="exercice">
+<summary>Exercice 12 — Suite de valeurs réelles</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire dix réels. Calculer leur moyenne, compter ceux qui sont strictement supérieurs à cette moyenne et afficher le plus petit nombre saisi.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> x : réel ; somme, moyenne, minimum : réels ; i, compteur : entiers.</p>
+<p><strong>Résultats :</strong> La moyenne, le nombre de valeurs supérieures à celle-ci et le minimum.</p>
+<p><strong>Traitement :</strong> Une première boucle calcule la somme et le minimum. Une seconde lecture nécessiterait de conserver les valeurs ; sans tableau, on ne peut pas comparer ensuite les dix valeurs à la moyenne. Il faut donc adapter la méthode en deux passages sur une source relisible ou accepter une autre méthode.</p>
+</div>
+<details class="solution">
+<summary>Afficher une solution algorithmique adaptée</summary>
+<pre>Algorithme Suite_Reels
+Variables
+    x, somme, moyenne, minimum : réel
+    i, compteur : entier
+Début
+    somme ← 0
+    Pour i de 1 à 10 Faire
+        Lire(x)
+        somme ← somme + x
+        Si i = 1 OU x < minimum Alors
+            minimum ← x
+        FinSi
+    FinPour
+    moyenne ← somme / 10
+    Écrire("Moyenne :", moyenne)
+    Écrire("Minimum :", minimum)
+    Écrire("Pour compter les valeurs supérieures, il faut
+    relire les données ou les mémoriser.")
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 13 -->
+<details class="exercice">
+<summary>Exercice 13 — Négation logique</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire deux booléens A et B, puis calculer séparément la négation de A ET B, et la négation de A OU B. Afficher les deux résultats.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> A, B : booléens.</p>
+<p><strong>Résultats :</strong> Deux booléens correspondant aux deux expressions.</p>
+<p><strong>Traitement :</strong> Calculer NON (A ET B), puis NON (A OU B), en respectant les parenthèses.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Negation_Logique
+Variables
+    A, B, R1, R2 : booléen
+Début
+    Lire(A, B)
+    R1 ← NON (A ET B)
+    R2 ← NON (A OU B)
+    Écrire(R1, R2)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 14 -->
+<details class="exercice">
+<summary>Exercice 14 — Divisibilité multiple</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire un entier positif n et déterminer s'il est divisible simultanément par 2 et par 3, par 2 seulement, par 3 seulement, ou par aucun des deux.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> n : entier positif.</p>
+<p><strong>Résultats :</strong> La catégorie de divisibilité de n.</p>
+<p><strong>Traitement :</strong> Tester les deux restes de division. Utiliser des conditions imbriquées pour distinguer les quatre cas.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Divisibilite
+Variables
+    n : entier
+Début
+    Lire(n)
+    Si n MOD 2 = 0 Alors
+        Si n MOD 3 = 0 Alors
+            Écrire("Divisible par 2 et 3")
+        Sinon
+            Écrire("Divisible par 2 seulement")
+        FinSi
+    Sinon
+        Si n MOD 3 = 0 Alors
+            Écrire("Divisible par 3 seulement")
+        Sinon
+            Écrire("Ni par 2 ni par 3")
+        FinSi
+    FinSi
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 15 -->
+<details class="exercice">
+<summary>Exercice 15 — Comparaison de chaînes</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire deux chaînes et déterminer si elles ont la même longueur. Si leurs longueurs sont égales, vérifier si leur premier caractère est identique.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> ch1, ch2 : chaînes.</p>
+<p><strong>Résultats :</strong> Une indication sur la longueur et, si possible, sur le premier caractère.</p>
+<p><strong>Traitement :</strong> Comparer les longueurs. Accéder au premier caractère seulement si les deux chaînes ne sont pas vides et si leurs longueurs sont égales.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Comparer_Chaines
+Variables
+    ch1, ch2 : chaîne
+Début
+    Lire(ch1, ch2)
+    Si longueur(ch1) = longueur(ch2) Alors
+        Écrire("Même longueur")
+        Si longueur(ch1) > 0 Alors
+            Si ch1[1] = ch2[1] Alors
+                Écrire("Même premier caractère")
+            Sinon
+                Écrire("Premiers caractères différents")
+            FinSi
+        FinSi
+    Sinon
+        Écrire("Longueurs différentes")
+    FinSi
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 16 -->
+<details class="exercice">
+<summary>Exercice 16 — Calcul d'une facture</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire le prix unitaire et la quantité d'un produit. Accorder une réduction de 10 % si le montant avant réduction est au moins égal à 500, puis calculer le montant final.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> prix : réel ; qte : entier.</p>
+<p><strong>Résultats :</strong> Montant initial, réduction et montant final.</p>
+<p><strong>Traitement :</strong> Multiplier le prix par la quantité. Appliquer la réduction uniquement si le seuil est atteint, puis soustraire la réduction du montant initial.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Facture
+Variables
+    prix, montant, reduction, final : réel
+    qte : entier
+Début
+    Lire(prix, qte)
+    montant ← prix * qte
+    reduction ← 0
+    Si montant >= 500 Alors
+        reduction ← montant * 0.10
+    FinSi
+    final ← montant - reduction
+    Écrire(montant, reduction, final)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 17 -->
+<details class="exercice">
+<summary>Exercice 17 — Inverser une chaîne</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire une chaîne et construire une nouvelle chaîne contenant ses caractères dans l'ordre inverse, sans utiliser de fonction d'inversion.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> ch, inverse : chaînes ; i : entier.</p>
+<p><strong>Résultats :</strong> La chaîne inversée.</p>
+<p><strong>Traitement :</strong> Initialiser une chaîne vide, puis parcourir la chaîne originale de la dernière position à la première en ajoutant chaque caractère au résultat.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Inverser_Chaine
+Variables
+    ch, inverse : chaîne
+    i : entier
+Début
+    Lire(ch)
+    inverse ← ""
+    Pour i de longueur(ch) à 1 pas -1 Faire
+        inverse ← inverse + ch[i]
+    FinPour
+    Écrire(inverse)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 18 -->
+<details class="exercice">
+<summary>Exercice 18 — Racine carrée valide</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire un réel x. Si x est positif ou nul, calculer sa racine carrée. Sinon, afficher que l'opération n'est pas définie dans les réels.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> x : réel.</p>
+<p><strong>Résultats :</strong> La racine carrée ou un message d'erreur.</p>
+<p><strong>Traitement :</strong> Vérifier que x est supérieur ou égal à zéro avant d'utiliser la fonction racine carrée.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Racine_Carree
+Variables
+    x, r : réel
+Début
+    Lire(x)
+    Si x >= 0 Alors
+        r ← racine(x)
+        Écrire(r)
+    Sinon
+        Écrire("Racine non définie dans les réels")
+    FinSi
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 19 -->
+<details class="exercice">
+<summary>Exercice 19 — Compter les chiffres d'un entier</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire un entier strictement positif et déterminer combien de chiffres il contient, sans convertir le nombre en chaîne.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> n : entier positif.</p>
+<p><strong>Résultats :</strong> Le nombre de chiffres.</p>
+<p><strong>Traitement :</strong> Diviser successivement n par 10 en division entière et incrémenter un compteur à chaque division jusqu'à obtenir zéro.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Nombre_Chiffres
+Variables
+    n, compteur : entier
+Début
+    Lire(n)
+    compteur ← 0
+    Répéter
+        compteur ← compteur + 1
+        n ← n DIV 10
+    Jusqu'à n = 0
+    Écrire(compteur)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 20 -->
+<details class="exercice">
+<summary>Exercice 20 — Condition exclusive</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire deux booléens A et B. Afficher Vrai si une seule des deux valeurs est vraie, et Faux si elles sont toutes les deux vraies ou toutes les deux fausses.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> A, B : booléens.</p>
+<p><strong>Résultats :</strong> Le résultat du OU exclusif.</p>
+<p><strong>Traitement :</strong> Vérifier que A et B ont des valeurs différentes, à l'aide de l'opérateur différent.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Ou_Exclusif
+Variables
+    A, B, R : booléen
+Début
+    Lire(A, B)
+    R ← A <> B
+    Écrire(R)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 21 -->
+<details class="exercice">
+<summary>Exercice 21 — Fréquence d'un caractère</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire une chaîne et un caractère c. Compter le nombre d'occurrences de c dans la chaîne et déterminer si ce caractère apparaît exactement une fois.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> ch : chaîne ; c : caractère ; i, nb : entiers.</p>
+<p><strong>Résultats :</strong> Le nombre d'occurrences et un booléen indiquant si l'occurrence est unique.</p>
+<p><strong>Traitement :</strong> Parcourir tous les caractères, compter ceux égaux à c, puis comparer le compteur à 1.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Frequence_Caractere
+Variables
+    ch : chaîne
+    c : caractère
+    i, nb : entier
+Début
+    Lire(ch, c)
+    nb ← 0
+    Pour i de 1 à longueur(ch) Faire
+        Si ch[i] = c Alors
+            nb ← nb + 1
+        FinSi
+    FinPour
+    Écrire("Occurrences :", nb)
+    Écrire("Unique :", nb = 1)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 22 -->
+<details class="exercice">
+<summary>Exercice 22 — Maximum et minimum</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire cinq nombres réels et afficher le maximum, le minimum et la différence entre les deux.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> x, max, min : réels ; i : entier.</p>
+<p><strong>Résultats :</strong> Maximum, minimum et étendue des valeurs.</p>
+<p><strong>Traitement :</strong> Initialiser le maximum et le minimum à la première valeur, comparer les quatre valeurs restantes, puis calculer max - min.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Maximum_Minimum
+Variables
+    x, max, min : réel
+    i : entier
+Début
+    Lire(x)
+    max ← x
+    min ← x
+    Pour i de 2 à 5 Faire
+        Lire(x)
+        Si x > max Alors
+            max ← x
+        FinSi
+        Si x < min Alors
+            min ← x
+        FinSi
+    FinPour
+    Écrire(max, min, max - min)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 23 -->
+<details class="exercice">
+<summary>Exercice 23 — Somme des chiffres impairs</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire un entier positif et calculer uniquement la somme de ses chiffres impairs. Afficher également le nombre de chiffres égaux à zéro.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> n, chiffre, somme, nbZero : entiers.</p>
+<p><strong>Résultats :</strong> Somme des chiffres impairs et nombre de zéros.</p>
+<p><strong>Traitement :</strong> Extraire les chiffres successivement. Ajouter uniquement les chiffres impairs à la somme et compter séparément les zéros.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Somme_Impairs
+Variables
+    n, chiffre, somme, nbZero : entier
+Début
+    Lire(n)
+    somme ← 0
+    nbZero ← 0
+    Répéter
+        chiffre ← n MOD 10
+        Si chiffre = 0 Alors
+            nbZero ← nbZero + 1
+        Sinon
+            Si chiffre MOD 2 <> 0 Alors
+                somme ← somme + chiffre
+            FinSi
+        FinSi
+        n ← n DIV 10
+    Jusqu'à n = 0
+    Écrire(somme, nbZero)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 24 -->
+<details class="exercice">
+<summary>Exercice 24 — Validation de trois conditions</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Un candidat est accepté si A est vraie, si B ou C est vraie, et si D est fausse. Lire ces quatre booléens et déterminer le résultat.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> A, B, C, D : booléens.</p>
+<p><strong>Résultats :</strong> Un booléen d'acceptation.</p>
+<p><strong>Traitement :</strong> Associer les conditions obligatoires par ET, la condition alternative par OU, et vérifier la négation de D.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Validation_Candidat
+Variables
+    A, B, C, D, accepte : booléen
+Début
+    Lire(A, B, C, D)
+    accepte ← A ET (B OU C) ET NON D
+    Écrire(accepte)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 25 -->
+<details class="exercice">
+<summary>Exercice 25 — Comparaison de longueurs</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire trois chaînes et afficher celle qui possède le plus grand nombre de caractères. Si plusieurs chaînes ont la même longueur maximale, signaler l'égalité.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> ch1, ch2, ch3 : chaînes ; n1, n2, n3 : entiers.</p>
+<p><strong>Résultats :</strong> La chaîne la plus longue ou un message d'égalité.</p>
+<p><strong>Traitement :</strong> Calculer les trois longueurs, déterminer la longueur maximale, puis vérifier combien de chaînes possèdent cette longueur.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Plus_Longue
+Variables
+    ch1, ch2, ch3 : chaîne
+    n1, n2, n3, max : entier
+Début
+    Lire(ch1, ch2, ch3)
+    n1 ← longueur(ch1)
+    n2 ← longueur(ch2)
+    n3 ← longueur(ch3)
+    max ← n1
+    Si n2 > max Alors
+        max ← n2
+    FinSi
+    Si n3 > max Alors
+        max ← n3
+    FinSi
+    Si (n1 = max) + (n2 = max) + (n3 = max) > 1 Alors
+        Écrire("Égalité de longueur maximale")
+    Sinon
+        Si n1 = max Alors
+            Écrire(ch1)
+        Sinon
+            Si n2 = max Alors
+                Écrire(ch2)
+            Sinon
+                Écrire(ch3)
+            FinSi
+        FinSi
+    FinSi
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 26 -->
+<details class="exercice">
+<summary>Exercice 26 — Puissance entière</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire un réel x et un entier positif n, puis calculer x puissance n par multiplications successives, sans utiliser la fonction puissance.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> x : réel ; n, i : entiers.</p>
+<p><strong>Résultats :</strong> La valeur de x puissance n.</p>
+<p><strong>Traitement :</strong> Initialiser le résultat à 1, puis multiplier ce résultat par x exactement n fois. Le cas n égal à zéro donne 1.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Puissance
+Variables
+    x, resultat : réel
+    n, i : entier
+Début
+    Lire(x, n)
+    resultat ← 1
+    Pour i de 1 à n Faire
+        resultat ← resultat * x
+    FinPour
+    Écrire(resultat)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 27 -->
+<details class="exercice">
+<summary>Exercice 27 — Vérifier un mot numérique</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire une chaîne et vérifier si tous ses caractères sont des chiffres de 0 à 9. Une chaîne vide doit être refusée.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> ch : chaîne ; i : entier ; valide : booléen.</p>
+<p><strong>Résultats :</strong> Indiquer si la chaîne représente une suite non vide de chiffres.</p>
+<p><strong>Traitement :</strong> Refuser la chaîne vide. Parcourir les caractères tant que la chaîne reste valide. Si un caractère sort de l'intervalle de 0 à 9, invalider la chaîne.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Chaine_Numerique
+Variables
+    ch : chaîne
+    i : entier
+    valide : booléen
+Début
+    Lire(ch)
+    valide ← longueur(ch) > 0
+    Pour i de 1 à longueur(ch) Faire
+        Si ch[i] < "0" OU ch[i] > "9" Alors
+            valide ← Faux
+        FinSi
+    FinPour
+    Écrire(valide)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 28 -->
+<details class="exercice">
+<summary>Exercice 28 — Réduire un prix</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire un prix positif. Appliquer une réduction de 5 % si le prix est inférieur à 100, de 12 % s'il est compris entre 100 inclus et 500 exclu, et de 20 % à partir de 500.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> prix, taux, final : réels.</p>
+<p><strong>Résultats :</strong> Taux de réduction et prix final.</p>
+<p><strong>Traitement :</strong> Classer le prix dans une des trois catégories, choisir le taux correspondant et calculer le prix après réduction.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Reduction_Prix
+Variables
+    prix, taux, final : réel
+Début
+    Lire(prix)
+    Si prix < 100 Alors
+        taux ← 0.05
+    Sinon
+        Si prix < 500 Alors
+            taux ← 0.12
+        Sinon
+            taux ← 0.20
+        FinSi
+    FinSi
+    final ← prix * (1 - taux)
+    Écrire(taux, final)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 29 -->
+<details class="exercice">
+<summary>Exercice 29 — Vérifier une progression</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire cinq entiers successifs saisis par l'utilisateur et vérifier si chaque valeur est strictement supérieure à la précédente.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> precedent, actuel : entiers ; i : entier ; croissant : booléen.</p>
+<p><strong>Résultats :</strong> Indiquer si la suite est strictement croissante.</p>
+<p><strong>Traitement :</strong> Lire la première valeur, puis les quatre suivantes. Comparer chaque valeur à la précédente et mémoriser si une comparaison échoue.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Suite_Croissante
+Variables
+    precedent, actuel, i : entier
+    croissant : booléen
+Début
+    Lire(precedent)
+    croissant ← Vrai
+    Pour i de 2 à 5 Faire
+        Lire(actuel)
+        Si actuel <= precedent Alors
+            croissant ← Faux
+        FinSi
+        precedent ← actuel
+    FinPour
+    Écrire(croissant)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 30 -->
+<details class="exercice">
+<summary>Exercice 30 — Expressions booléennes équivalentes</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire deux booléens A et B. Comparer les résultats de NON (A ET B) et de NON A OU NON B. Afficher si les deux expressions sont équivalentes pour les valeurs saisies.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> A, B : booléens.</p>
+<p><strong>Résultats :</strong> Deux résultats logiques et leur égalité.</p>
+<p><strong>Traitement :</strong> Calculer les deux expressions en respectant les parenthèses, puis comparer leurs résultats.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Equivalence_Logique
+Variables
+    A, B, R1, R2 : booléen
+Début
+    Lire(A, B)
+    R1 ← NON (A ET B)
+    R2 ← (NON A) OU (NON B)
+    Écrire(R1, R2)
+    Écrire(R1 = R2)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 31 -->
+<details class="exercice">
+<summary>Exercice 31 — Caractères identiques consécutifs</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire une chaîne et déterminer si elle contient au moins deux caractères identiques consécutifs. Une chaîne d'un seul caractère ne peut pas satisfaire cette condition.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> ch : chaîne ; i : entier ; trouve : booléen.</p>
+<p><strong>Résultats :</strong> Un booléen indiquant l'existence d'une répétition consécutive.</p>
+<p><strong>Traitement :</strong> Comparer chaque caractère au suivant, jusqu'à la fin de la chaîne ou jusqu'à trouver une égalité.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Repetition_Consecutive
+Variables
+    ch : chaîne
+    i : entier
+    trouve : booléen
+Début
+    Lire(ch)
+    trouve ← Faux
+    i ← 1
+    TantQue i < longueur(ch) ET NON trouve Faire
+        Si ch[i] = ch[i + 1] Alors
+            trouve ← Vrai
+        FinSi
+        i ← i + 1
+    FinTantQue
+    Écrire(trouve)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 32 -->
+<details class="exercice">
+<summary>Exercice 32 — Approximation d'une somme</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Calculer la somme 1 + 1/2 + 1/3 + ... + 1/n pour un entier n strictement positif. Afficher le résultat avec une précision suffisante pour observer la croissance de la somme.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> n, i : entiers ; somme : réel.</p>
+<p><strong>Résultats :</strong> La somme calculée.</p>
+<p><strong>Traitement :</strong> Initialiser la somme à zéro, puis ajouter 1/i pour chaque entier de 1 à n. Le calcul doit être effectué en réel.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Somme_Harmonique
+Variables
+    n, i : entier
+    somme : réel
+Début
+    Lire(n)
+    somme ← 0
+    Pour i de 1 à n Faire
+        somme ← somme + 1 / i
+    FinPour
+    Écrire(somme)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 33 -->
+<details class="exercice">
+<summary>Exercice 33 — Chiffre maximal</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire un entier positif et déterminer son chiffre le plus grand, ainsi que le nombre de fois où ce chiffre apparaît.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> n, chiffre, maximum, nb : entiers.</p>
+<p><strong>Résultats :</strong> Le plus grand chiffre et sa fréquence.</p>
+<p><strong>Traitement :</strong> Parcourir les chiffres du nombre. Si un chiffre dépasse le maximum, remplacer le maximum et réinitialiser son compteur ; s'il est égal au maximum, incrémenter le compteur.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Chiffre_Maximal
+Variables
+    n, chiffre, maximum, nb : entier
+Début
+    Lire(n)
+    maximum ← -1
+    nb ← 0
+    Répéter
+        chiffre ← n MOD 10
+        Si chiffre > maximum Alors
+            maximum ← chiffre
+            nb ← 1
+        Sinon
+            Si chiffre = maximum Alors
+                nb ← nb + 1
+            FinSi
+        FinSi
+        n ← n DIV 10
+    Jusqu'à n = 0
+    Écrire(maximum, nb)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 34 -->
+<details class="exercice">
+<summary>Exercice 34 — Conditions de température</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire une température réelle. Afficher « Froid » si elle est inférieure à 10, « Modéré » de 10 inclus à 25 exclu, et « Chaud » à partir de 25.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> t : réel.</p>
+<p><strong>Résultats :</strong> Une catégorie de température.</p>
+<p><strong>Traitement :</strong> Comparer successivement la température aux deux seuils pour sélectionner une catégorie unique.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Temperature
+Variables
+    t : réel
+Début
+    Lire(t)
+    Si t < 10 Alors
+        Écrire("Froid")
+    Sinon
+        Si t < 25 Alors
+            Écrire("Modéré")
+        Sinon
+            Écrire("Chaud")
+        FinSi
+    FinSi
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 35 -->
+<details class="exercice">
+<summary>Exercice 35 — Validation d'un identifiant</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire une chaîne et vérifier qu'elle contient au moins six caractères et qu'elle ne contient aucun espace. Afficher le résultat de validation.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> identifiant : chaîne ; i : entier ; valide : booléen.</p>
+<p><strong>Résultats :</strong> La validité de l'identifiant.</p>
+<p><strong>Traitement :</strong> Vérifier d'abord la longueur minimale, puis rechercher un espace dans la chaîne. Un seul espace suffit à rendre l'identifiant invalide.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Validation_Identifiant
+Variables
+    identifiant : chaîne
+    i : entier
+    valide : booléen
+Début
+    Lire(identifiant)
+    valide ← longueur(identifiant) >= 6
+    Pour i de 1 à longueur(identifiant) Faire
+        Si identifiant[i] = " " Alors
+            valide ← Faux
+        FinSi
+    FinPour
+    Écrire(valide)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 36 -->
+<details class="exercice">
+<summary>Exercice 36 — Factorielle</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire un entier n compris entre 0 et 12, puis calculer n! par multiplications successives. Refuser les valeurs hors de l'intervalle indiqué.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> n, i : entiers ; resultat : entier.</p>
+<p><strong>Résultats :</strong> La factorielle de n ou un message d'erreur.</p>
+<p><strong>Traitement :</strong> Valider n, initialiser le résultat à 1, puis multiplier par chaque entier de 1 à n. Le cas n = 0 donne 1.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Factorielle
+Variables
+    n, i, resultat : entier
+Début
+    Lire(n)
+    Si n < 0 OU n > 12 Alors
+        Écrire("Valeur invalide")
+    Sinon
+        resultat ← 1
+        Pour i de 1 à n Faire
+            resultat ← resultat * i
+        FinPour
+        Écrire(resultat)
+    FinSi
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 37 -->
+<details class="exercice">
+<summary>Exercice 37 — Détecter une chaîne croissante</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire une chaîne composée de chiffres et vérifier si les caractères sont rangés dans l'ordre croissant ou égal, de gauche à droite. On suppose que la chaîne est non vide et ne contient que des chiffres.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> ch : chaîne ; i : entier ; ordonnee : booléen.</p>
+<p><strong>Résultats :</strong> Un booléen indiquant si les chiffres sont non décroissants.</p>
+<p><strong>Traitement :</strong> Comparer chaque caractère au suivant. Si un caractère est supérieur au suivant, la propriété n'est pas respectée.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Chiffres_Ordonnes
+Variables
+    ch : chaîne
+    i : entier
+    ordonnee : booléen
+Début
+    Lire(ch)
+    ordonnee ← Vrai
+    Pour i de 1 à longueur(ch) - 1 Faire
+        Si ch[i] > ch[i + 1] Alors
+            ordonnee ← Faux
+        FinSi
+    FinPour
+    Écrire(ordonnee)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 38 -->
+<details class="exercice">
+<summary>Exercice 38 — Vérifier un triangle</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire trois réels strictement positifs représentant les longueurs de trois côtés. Vérifier s'ils peuvent former un triangle et, si oui, déterminer si le triangle est équilatéral, isocèle ou quelconque.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> a, b, c : réels.</p>
+<p><strong>Résultats :</strong> Validité du triangle et sa catégorie.</p>
+<p><strong>Traitement :</strong> Vérifier les trois inégalités triangulaires. Si elles sont toutes satisfaites, comparer les côtés pour déterminer la catégorie.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Triangle
+Variables
+    a, b, c : réel
+Début
+    Lire(a, b, c)
+    Si a > 0 ET b > 0 ET c > 0 ET
+       a + b > c ET a + c > b ET b + c > a Alors
+        Si a = b ET b = c Alors
+            Écrire("Équilatéral")
+        Sinon
+            Si a = b OU a = c OU b = c Alors
+                Écrire("Isocèle")
+            Sinon
+                Écrire("Quelconque")
+            FinSi
+        FinSi
+    Sinon
+        Écrire("Triangle impossible")
+    FinSi
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 39 -->
+<details class="exercice">
+<summary>Exercice 39 — Caractère aux positions paires</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire une chaîne et compter les occurrences de la lettre A uniquement aux positions paires : 2, 4, 6, etc.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> ch : chaîne ; i, nb : entiers.</p>
+<p><strong>Résultats :</strong> Le nombre de A situés aux positions paires.</p>
+<p><strong>Traitement :</strong> Parcourir les positions de 2 en 2 à partir de 2 et compter celles qui contiennent A.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme A_Positions_Paires
+Variables
+    ch : chaîne
+    i, nb : entier
+Début
+    Lire(ch)
+    nb ← 0
+    Pour i de 2 à longueur(ch) pas 2 Faire
+        Si ch[i] = "A" Alors
+            nb ← nb + 1
+        FinSi
+    FinPour
+    Écrire(nb)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 40 -->
+<details class="exercice">
+<summary>Exercice 40 — Calcul d'intérêts simples</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire un capital positif, un taux annuel en pourcentage et une durée entière en années. Calculer les intérêts simples et le capital final, puis vérifier si les intérêts dépassent 25 % du capital initial.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> capital, taux, interets, final : réels ; duree : entier.</p>
+<p><strong>Résultats :</strong> Intérêts, capital final et indicateur de dépassement.</p>
+<p><strong>Traitement :</strong> Calculer les intérêts simples à partir du capital, du taux converti en fraction et de la durée. Ajouter les intérêts au capital, puis comparer le montant des intérêts à 25 % du capital.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Interets_Simples
+Variables
+    capital, taux, interets, final : réel
+    duree : entier
+Début
+    Lire(capital, taux, duree)
+    interets ← capital * taux / 100 * duree
+    final ← capital + interets
+    Écrire(interets, final)
+    Si interets > capital * 0.25 Alors
+        Écrire("Dépassement de 25 %")
+    Sinon
+        Écrire("Dépassement non atteint")
+    FinSi
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 41 -->
+<details class="exercice">
+<summary>Exercice 41 — Première et dernière occurrence</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire une chaîne et un caractère c. Déterminer la position de sa première occurrence et celle de sa dernière occurrence. Si le caractère est absent, afficher un message spécifique.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> ch : chaîne ; c : caractère ; i, premiere, derniere : entiers.</p>
+<p><strong>Résultats :</strong> Les deux positions ou un message d'absence.</p>
+<p><strong>Traitement :</strong> Parcourir la chaîne dans l'ordre. Enregistrer la première position uniquement si elle n'a pas encore été trouvée. Mettre à jour la dernière position à chaque occurrence.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Occurrences_Extremes
+Variables
+    ch : chaîne
+    c : caractère
+    i, premiere, derniere : entier
+Début
+    Lire(ch, c)
+    premiere ← 0
+    derniere ← 0
+    Pour i de 1 à longueur(ch) Faire
+        Si ch[i] = c Alors
+            Si premiere = 0 Alors
+                premiere ← i
+            FinSi
+            derniere ← i
+        FinSi
+    FinPour
+    Si premiere = 0 Alors
+        Écrire("Caractère absent")
+    Sinon
+        Écrire(premiere, derniere)
+    FinSi
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 42 -->
+<details class="exercice">
+<summary>Exercice 42 — Somme jusqu'à dépassement</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire un seuil réel positif, puis lire des réels positifs et calculer leur somme jusqu'à ce que la somme dépasse strictement le seuil. Afficher la somme finale et le nombre de valeurs lues.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> seuil, x, somme : réels ; compteur : entier.</p>
+<p><strong>Résultats :</strong> La somme finale et le nombre de valeurs lues.</p>
+<p><strong>Traitement :</strong> Tant que la somme ne dépasse pas le seuil, lire une valeur positive, l'ajouter à la somme et incrémenter le compteur.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Somme_Seuil
+Variables
+    seuil, x, somme : réel
+    compteur : entier
+Début
+    Lire(seuil)
+    somme ← 0
+    compteur ← 0
+    TantQue somme <= seuil Faire
+        Lire(x)
+        Si x > 0 Alors
+            somme ← somme + x
+            compteur ← compteur + 1
+        FinSi
+    FinTantQue
+    Écrire(somme, compteur)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 43 -->
+<details class="exercice">
+<summary>Exercice 43 — Nombre parfait</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire un entier n supérieur à 1 et déterminer s'il est parfait. Un nombre est parfait lorsque la somme de ses diviseurs strictement inférieurs à lui est égale à lui-même.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> n, i, somme : entiers.</p>
+<p><strong>Résultats :</strong> Indiquer si n est parfait.</p>
+<p><strong>Traitement :</strong> Parcourir les entiers de 1 à n - 1, ajouter ceux qui divisent n sans reste, puis comparer la somme à n.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Nombre_Parfait
+Variables
+    n, i, somme : entier
+Début
+    Lire(n)
+    somme ← 0
+    Pour i de 1 à n - 1 Faire
+        Si n MOD i = 0 Alors
+            somme ← somme + i
+        FinSi
+    FinPour
+    Si somme = n Alors
+        Écrire("Parfait")
+    Sinon
+        Écrire("Non parfait")
+    FinSi
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 44 -->
+<details class="exercice">
+<summary>Exercice 44 — Trois booléens majoritaires</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire trois booléens et déterminer si au moins deux d'entre eux sont vrais. Utiliser une expression logique unique pour obtenir le résultat.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> A, B, C : booléens.</p>
+<p><strong>Résultats :</strong> Vrai si au moins deux valeurs sont vraies.</p>
+<p><strong>Traitement :</strong> Vérifier si une paire parmi A et B, A et C, ou B et C est vraie.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Majorite_Booleenne
+Variables
+    A, B, C, resultat : booléen
+Début
+    Lire(A, B, C)
+    resultat ← (A ET B) OU (A ET C) OU (B ET C)
+    Écrire(resultat)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 45 -->
+<details class="exercice">
+<summary>Exercice 45 — Fréquence des chiffres pairs</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire un entier strictement positif et calculer le pourcentage de chiffres pairs parmi tous ses chiffres.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> n, chiffre, total, pairs : entiers ; pourcentage : réel.</p>
+<p><strong>Résultats :</strong> Le nombre de chiffres et le pourcentage de chiffres pairs.</p>
+<p><strong>Traitement :</strong> Compter tous les chiffres et ceux qui sont pairs pendant l'extraction, puis calculer le rapport entre les deux compteurs multiplié par 100.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Pourcentage_Pairs
+Variables
+    n, chiffre, total, pairs : entier
+    pourcentage : réel
+Début
+    Lire(n)
+    total ← 0
+    pairs ← 0
+    Répéter
+        chiffre ← n MOD 10
+        total ← total + 1
+        Si chiffre MOD 2 = 0 Alors
+            pairs ← pairs + 1
+        FinSi
+        n ← n DIV 10
+    Jusqu'à n = 0
+    pourcentage ← pairs * 100 / total
+    Écrire(total, pourcentage)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 46 -->
+<details class="exercice">
+<summary>Exercice 46 — Contrôle de cohérence</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire une valeur minimale, une valeur maximale et une mesure réelle. Vérifier que les limites sont correctement ordonnées et que la mesure se trouve dans l'intervalle fermé.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> min, max, mesure : réels.</p>
+<p><strong>Résultats :</strong> Un booléen de validité.</p>
+<p><strong>Traitement :</strong> Vérifier d'abord min inférieur ou égal à max. Si cette condition est vraie, vérifier l'appartenance de la mesure à l'intervalle.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Controle_Mesure
+Variables
+    min, max, mesure : réel
+    valide : booléen
+Début
+    Lire(min, max, mesure)
+    valide ← Faux
+    Si min <= max Alors
+        valide ← mesure >= min ET mesure <= max
+    FinSi
+    Écrire(valide)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 47 -->
+<details class="exercice">
+<summary>Exercice 47 — Comparaison inversée</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire deux chaînes non vides de même longueur et vérifier si la première est égale à la seconde lue de droite à gauche.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> ch1, ch2 : chaînes ; i, n : entiers ; identiques : booléen.</p>
+<p><strong>Résultats :</strong> Un booléen indiquant si la deuxième chaîne est l'inverse de la première.</p>
+<p><strong>Traitement :</strong> Vérifier les longueurs, puis comparer chaque caractère de la première chaîne au caractère correspondant en partant de la fin de la deuxième chaîne.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Chaines_Inversees
+Variables
+    ch1, ch2 : chaîne
+    i, n : entier
+    identiques : booléen
+Début
+    Lire(ch1, ch2)
+    n ← longueur(ch1)
+    identiques ← n = longueur(ch2)
+    Si identiques Alors
+        Pour i de 1 à n Faire
+            Si ch1[i] <> ch2[n - i + 1] Alors
+                identiques ← Faux
+            FinSi
+        FinPour
+    FinSi
+    Écrire(identiques)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 48 -->
+<details class="exercice">
+<summary>Exercice 48 — Suite géométrique</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire un réel initial u, une raison q et un entier n positif. Calculer le terme obtenu après n multiplications successives par q, sans utiliser la fonction puissance.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> u, q : réels ; n, i : entiers.</p>
+<p><strong>Résultats :</strong> Le terme final de la suite.</p>
+<p><strong>Traitement :</strong> Multiplier u par q à chaque itération. Après n itérations, le résultat est u multiplié par q puissance n.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Suite_Geometrique
+Variables
+    u, q : réel
+    n, i : entier
+Début
+    Lire(u, q, n)
+    Pour i de 1 à n Faire
+        u ← u * q
+    FinPour
+    Écrire(u)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 49 -->
+<details class="exercice">
+<summary>Exercice 49 — Vérifier les parenthèses simples</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire une chaîne composée uniquement des caractères « ( » et « ) ». Vérifier que chaque préfixe contient au moins autant de parenthèses ouvrantes que fermantes et que le nombre total des deux types est égal.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> ch : chaîne ; i, compteur : entiers ; valide : booléen.</p>
+<p><strong>Résultats :</strong> Indiquer si les parenthèses sont équilibrées.</p>
+<p><strong>Traitement :</strong> Incrémenter le compteur pour une parenthèse ouvrante, le décrémenter pour une fermante. Si le compteur devient négatif, la chaîne est invalide. À la fin, il doit être nul.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Parentheses
+Variables
+    ch : chaîne
+    i, compteur : entier
+    valide : booléen
+Début
+    Lire(ch)
+    compteur ← 0
+    valide ← Vrai
+    Pour i de 1 à longueur(ch) Faire
+        Si ch[i] = "(" Alors
+            compteur ← compteur + 1
+        Sinon
+            compteur ← compteur - 1
+        FinSi
+        Si compteur < 0 Alors
+            valide ← Faux
+        FinSi
+    FinPour
+    Si compteur <> 0 Alors
+        valide ← Faux
+    FinSi
+    Écrire(valide)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 50 -->
+<details class="exercice">
+<summary>Exercice 50 — Résolution d'une équation</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire trois réels a, b et c pour l'équation ax + b = c. Déterminer si elle possède une solution unique, aucune solution ou une infinité de solutions.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> a, b, c, x : réels.</p>
+<p><strong>Résultats :</strong> La solution ou la nature de l'ensemble des solutions.</p>
+<p><strong>Traitement :</strong> Si a est non nul, isoler x. Si a est nul, comparer b à c : l'égalité est soit toujours vraie, soit impossible.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Equation_Lineaire
+Variables
+    a, b, c, x : réel
+Début
+    Lire(a, b, c)
+    Si a <> 0 Alors
+        x ← (c - b) / a
+        Écrire("Solution unique :", x)
+    Sinon
+        Si b = c Alors
+            Écrire("Infinité de solutions")
+        Sinon
+            Écrire("Aucune solution")
+        FinSi
+    FinSi
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 51 -->
+<details class="exercice">
+<summary>Exercice 51 — Première lettre et dernière lettre</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire une chaîne non vide et déterminer si son premier caractère apparaît également à la dernière position et au moins une fois à l'intérieur de la chaîne.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> ch : chaîne ; i, n : entiers ; interieur : booléen.</p>
+<p><strong>Résultats :</strong> Indiquer si les trois conditions sont réunies.</p>
+<p><strong>Traitement :</strong> Comparer les caractères extrêmes, puis parcourir les positions intérieures pour rechercher le caractère initial.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Caracteres_Extremes
+Variables
+    ch : chaîne
+    i, n : entier
+    interieur : booléen
+Début
+    Lire(ch)
+    n ← longueur(ch)
+    interieur ← Faux
+    Si n >= 3 ET ch[1] = ch[n] Alors
+        Pour i de 2 à n - 1 Faire
+            Si ch[i] = ch[1] Alors
+                interieur ← Vrai
+            FinSi
+        FinPour
+    FinSi
+    Écrire(interieur)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 52 -->
+<details class="exercice">
+<summary>Exercice 52 — Dépassement d'une limite</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire un réel positif x et déterminer le plus petit entier n tel que 2 puissance n soit supérieur ou égal à x. Utiliser des multiplications successives, sans fonction puissance.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> x : réel ; n : entier ; valeur : réel.</p>
+<p><strong>Résultats :</strong> Le plus petit entier recherché.</p>
+<p><strong>Traitement :</strong> Commencer avec valeur égale à 1 et n égal à zéro. Tant que la valeur est inférieure à x, la multiplier par 2 et incrémenter n.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Puissance_Deux
+Variables
+    x, valeur : réel
+    n : entier
+Début
+    Lire(x)
+    n ← 0
+    valeur ← 1
+    TantQue valeur < x Faire
+        valeur ← valeur * 2
+        n ← n + 1
+    FinTantQue
+    Écrire(n, valeur)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 53 -->
+<details class="exercice">
+<summary>Exercice 53 — Nombre d'occurrences maximal</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire une chaîne et déterminer si un caractère apparaît au moins deux fois. Afficher Vrai si une répétition existe, sinon Faux. On peut comparer les caractères deux à deux.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> ch : chaîne ; i, j : entiers ; repetition : booléen.</p>
+<p><strong>Résultats :</strong> Un booléen indiquant si au moins un caractère se répète.</p>
+<p><strong>Traitement :</strong> Comparer chaque caractère avec tous ceux qui le suivent. Dès qu'une égalité est trouvée, la propriété est vraie.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Caractere_Repete
+Variables
+    ch : chaîne
+    i, j : entier
+    repetition : booléen
+Début
+    Lire(ch)
+    repetition ← Faux
+    Pour i de 1 à longueur(ch) - 1 Faire
+        Pour j de i + 1 à longueur(ch) Faire
+            Si ch[i] = ch[j] Alors
+                repetition ← Vrai
+            FinSi
+        FinPour
+    FinPour
+    Écrire(repetition)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 54 -->
+<details class="exercice">
+<summary>Exercice 54 — Valeur absolue sans fonction</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire trois réels et déterminer lequel possède la plus grande valeur absolue, sans utiliser la fonction Abs. En cas d'égalité, signaler le résultat.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> a, b, c, aa, ab, ac : réels.</p>
+<p><strong>Résultats :</strong> La plus grande valeur absolue et les valeurs correspondantes.</p>
+<p><strong>Traitement :</strong> Remplacer chaque nombre négatif par son opposé, comparer les trois valeurs obtenues, puis signaler les égalités éventuelles.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Plus_Grande_Valeur_Absolue
+Variables
+    a, b, c, aa, ab, ac, max : réel
+Début
+    Lire(a, b, c)
+    aa ← a
+    ab ← b
+    ac ← c
+    Si aa < 0 Alors
+        aa ← -aa
+    FinSi
+    Si ab < 0 Alors
+        ab ← -ab
+    FinSi
+    Si ac < 0 Alors
+        ac ← -ac
+    FinSi
+    max ← aa
+    Si ab > max Alors
+        max ← ab
+    FinSi
+    Si ac > max Alors
+        max ← ac
+    FinSi
+    Écrire(max)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 55 -->
+<details class="exercice">
+<summary>Exercice 55 — Vérifier une chaîne sans répétition</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire une chaîne et déterminer si tous ses caractères sont différents. Une chaîne vide ou contenant un seul caractère satisfait cette propriété.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> ch : chaîne ; i, j : entiers ; unique : booléen.</p>
+<p><strong>Résultats :</strong> Indiquer si aucun caractère n'est répété.</p>
+<p><strong>Traitement :</strong> Comparer chaque caractère à tous les caractères suivants. Dès qu'une égalité apparaît, la propriété devient fausse.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Caracteres_Distincts
+Variables
+    ch : chaîne
+    i, j : entier
+    unique : booléen
+Début
+    Lire(ch)
+    unique ← Vrai
+    Pour i de 1 à longueur(ch) - 1 Faire
+        Pour j de i + 1 à longueur(ch) Faire
+            Si ch[i] = ch[j] Alors
+                unique ← Faux
+            FinSi
+        FinPour
+    FinPour
+    Écrire(unique)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 56 -->
+<details class="exercice">
+<summary>Exercice 56 — Diviseurs communs</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire deux entiers strictement positifs et compter leurs diviseurs communs strictement supérieurs à zéro. Afficher également le plus grand diviseur commun trouvé.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> a, b, i, nb, pgcd : entiers.</p>
+<p><strong>Résultats :</strong> Nombre de diviseurs communs et plus grand diviseur commun.</p>
+<p><strong>Traitement :</strong> Tester chaque entier de 1 au minimum de a et b. Si cet entier divise les deux nombres, incrémenter le compteur et mémoriser sa valeur comme plus grand diviseur commun rencontré.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Diviseurs_Communs
+Variables
+    a, b, i, nb, pgcd, limite : entier
+Début
+    Lire(a, b)
+    nb ← 0
+    pgcd ← 1
+    Si a < b Alors
+        limite ← a
+    Sinon
+        limite ← b
+    FinSi
+    Pour i de 1 à limite Faire
+        Si a MOD i = 0 ET b MOD i = 0 Alors
+            nb ← nb + 1
+            pgcd ← i
+        FinSi
+    FinPour
+    Écrire(nb, pgcd)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 57 -->
+<details class="exercice">
+<summary>Exercice 57 — Validation de trois booléens</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire trois booléens A, B et C. Vérifier que A est vraie si et seulement si B et C possèdent des valeurs différentes.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> A, B, C : booléens.</p>
+<p><strong>Résultats :</strong> Un booléen indiquant si la relation logique est respectée.</p>
+<p><strong>Traitement :</strong> Calculer B différent de C, puis vérifier que le résultat est identique à A.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Relation_Booleenne
+Variables
+    A, B, C, relation : booléen
+Début
+    Lire(A, B, C)
+    relation ← B <> C
+    Écrire(A = relation)
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 58 -->
+<details class="exercice">
+<summary>Exercice 58 — Calcul de moyenne avec arrêt</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire des notes comprises entre 0 et 20 jusqu'à ce que l'utilisateur saisisse -1. Calculer la moyenne des notes valides et compter les notes supérieures ou égales à 10. Si aucune note n'a été saisie, afficher un message adapté.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> note, somme, moyenne : réels ; nb, admises : entiers.</p>
+<p><strong>Résultats :</strong> Moyenne des notes valides et nombre de notes au moins égales à 10.</p>
+<p><strong>Traitement :</strong> Lire les notes jusqu'à la valeur sentinelle -1. Ignorer les valeurs hors de l'intervalle 0 à 20. Accumuler la somme et les compteurs, puis calculer la moyenne si le nombre de notes valides est non nul.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Moyenne_Avec_Arret
+Variables
+    note, somme, moyenne : réel
+    nb, admises : entier
+Début
+    somme ← 0
+    nb ← 0
+    admises ← 0
+    Lire(note)
+    TantQue note <> -1 Faire
+        Si note >= 0 ET note <= 20 Alors
+            somme ← somme + note
+            nb ← nb + 1
+            Si note >= 10 Alors
+                admises ← admises + 1
+            FinSi
+        FinSi
+        Lire(note)
+    FinTantQue
+    Si nb = 0 Alors
+        Écrire("Aucune note valide")
+    Sinon
+        moyenne ← somme / nb
+        Écrire(moyenne, admises)
+    FinSi
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 59 -->
+<details class="exercice">
+<summary>Exercice 59 — Tester une propriété numérique</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire un entier positif et vérifier si la somme de ses chiffres est égale au produit de ses chiffres. Afficher les deux résultats intermédiaires et la décision finale.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> n, chiffre, somme, produit : entiers.</p>
+<p><strong>Résultats :</strong> Somme des chiffres, produit des chiffres et résultat de la comparaison.</p>
+<p><strong>Traitement :</strong> Extraire chaque chiffre. Ajouter le chiffre à la somme et le multiplier au produit. Comparer les deux résultats après le traitement de tous les chiffres.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Somme_Egale_Produit
+Variables
+    n, chiffre, somme, produit : entier
+Début
+    Lire(n)
+    somme ← 0
+    produit ← 1
+    Répéter
+        chiffre ← n MOD 10
+        somme ← somme + chiffre
+        produit ← produit * chiffre
+        n ← n DIV 10
+    Jusqu'à n = 0
+    Écrire(somme, produit)
+    Si somme = produit Alors
+        Écrire("Somme égale au produit")
+    Sinon
+        Écrire("Somme différente du produit")
+    FinSi
+Fin</pre>
+</details>
+</div>
+</details>
+
+<!-- EXERCICE 60 -->
+<details class="exercice">
+<summary>Exercice 60 — Vérification combinée</summary>
+<div class="contenu">
+<h3>Énoncé</h3>
+<p>Lire une chaîne non vide, un entier positif n et un réel x. Déterminer si la chaîne a une longueur paire, si n est divisible par 3 et si x appartient à l'intervalle [0, 100]. Afficher Vrai uniquement lorsque les trois conditions sont satisfaites.</p>
+<h3>Analyse</h3>
+<div class="analyse">
+<p><strong>Données :</strong> ch : chaîne ; n : entier ; x : réel.</p>
+<p><strong>Résultats :</strong> Un booléen indiquant si les trois conditions sont réunies.</p>
+<p><strong>Traitement :</strong> Vérifier séparément la parité de la longueur, la divisibilité de n par 3 et l'appartenance de x à l'intervalle. Combiner les trois résultats par ET.</p>
+</div>
+<details class="solution">
+<summary>Afficher la solution algorithmique</summary>
+<pre>Algorithme Verification_Combinee
+Variables
+    ch : chaîne
+    n : entier
+    x : réel
+    resultat : booléen
+Début
+    Lire(ch, n, x)
+    resultat ← longueur(ch) MOD 2 = 0
+        ET n MOD 3 = 0
+        ET x >= 0 ET x <= 100
+    Écrire(resultat)
+Fin</pre>
+</details>
+</div>
+</details>
+
+</main>
+
+<footer>
+    <p>Entraînement en algorithmique — 60 exercices avec analyses et corrections.</p>
+    <p>Technologies utilisées : HTML et CSS uniquement.</p>
+</footer>
+
+</body>
+</html>

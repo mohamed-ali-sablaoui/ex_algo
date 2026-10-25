@@ -1,0 +1,196 @@
+
+/* ==============================
+   PAGE D'EXERCICES D'ALGORITHMIQUE
+   ============================== */
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --fond: #f3f6fc;
+    --surface: #ffffff;
+    --bleu: #2d194d;
+    --bleu-clair: #e9efff;
+    --texte: #3d114e;
+    --secondaire: #65728a;
+    --bordure: #dce4f1;
+    --vert: #16805d;
+}
+
+body {
+    margin: 0;
+    background: var(--fond);
+    color: var(--texte);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.7;
+}
+
+header {
+    padding: 48px 20px;
+    color: white;
+    text-align: center;
+    background: linear-gradient(135deg, #421763, #3567c8);
+}
+
+header h1 {
+    margin: 0 0 12px;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+}
+
+header p {
+    max-width: 760px;
+    margin: auto;
+    color: #e3eaff;
+}
+
+main {
+    width: min(1050px, 94%);
+    margin: 32px auto;
+}
+
+.introduction {
+    padding: 22px;
+    margin-bottom: 28px;
+    background: var(--surface);
+    border: 1px solid var(--bordure);
+    border-radius: 14px;
+}
+
+.introduction h2 {
+    margin-top: 0;
+    color: var(--bleu);
+}
+
+.progression {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.progression span {
+    padding: 6px 12px;
+    color: var(--bleu);
+    background: var(--bleu-clair);
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.exercice {
+    margin: 18px 0;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--bordure);
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgb(24 45 90 / 5%);
+}
+
+.exercice > summary {
+    padding: 17px 20px;
+    color: var(--bleu);
+    background: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    list-style-position: inside;
+}
+
+.exercice > summary:hover {
+    background: var(--bleu-clair);
+}
+
+.exercice[open] > summary {
+    border-bottom: 1px solid var(--bordure);
+}
+
+.contenu {
+    padding: 20px;
+}
+
+.contenu h3 {
+    margin: 20px 0 8px;
+    color: var(--bleu);
+    font-size: 1.05rem;
+}
+
+.contenu h3:first-child {
+    margin-top: 0;
+}
+
+.contenu p {
+    margin: 8px 0;
+}
+
+.analyse {
+    padding: 14px 17px;
+    background: #f6f8fd;
+    border-left: 4px solid var(--bleu);
+    border-radius: 5px;
+}
+
+.analyse p {
+    margin: 7px 0;
+}
+
+.solution {
+    margin-top: 18px;
+    border: 1px solid #cce7dc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.solution > summary {
+    padding: 12px 15px;
+    color: var(--vert);
+    background: #effaf5;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.solution > summary:hover {
+    background: #e0f5eb;
+}
+
+pre {
+    padding: 18px;
+    margin: 0;
+    overflow-x: auto;
+    color: #e7edff;
+    background: #172238;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+footer {
+    padding: 24px 16px;
+    color: var(--secondaire);
+    text-align: center;
+    border-top: 1px solid var(--bordure);
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 32px 16px;
+    }
+
+    main {
+        width: 96%;
+        margin: 18px auto;
+    }
+
+    .contenu {
+        padding: 14px;
+    }
+
+    .exercice > summary {
+        padding: 14px;
+    }
+
+    pre {
+        padding: 12px;
+        font-size: 0.82rem;
+    }
+}
